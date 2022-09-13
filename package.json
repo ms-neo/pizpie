@@ -2,7 +2,7 @@
   "name": "pizpie",
   "version": "1.0.0",
   "description": "",
-  "main": "backend/server.js",
+  "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "server": "cd backend && nodemon server.js",
@@ -17,6 +17,7 @@
   "dependencies": {
     "axios": "^0.27.0",
     "dotenv": "^16.0.1",
-    "express": "^4.18.1"
+    "express": "^4.18.1",
+    "mongoose": "^6.6.0"
   }
 }
