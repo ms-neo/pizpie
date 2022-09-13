@@ -2,7 +2,7 @@
   "name": "pizpie",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "backend/server.js",
   "scripts": {
     "start": "node server.js",
     "server": "cd backend && nodemon server.js",
