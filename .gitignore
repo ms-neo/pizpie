@@ -1,6 +1,6 @@
 .DS_Store
 .env
-/config/default.json
+config/default
 # Logs
 logs
 *.log
