@@ -6,11 +6,8 @@ const CreidtCard=require('../../models/creditCard')
 // processing credit card
 const stripe = require('stripe')(`${process.env.STRIPE_PRIVET_KEY}`)
 
-
-
 paymentRouter.get('/key',isAuth, (req,res)=>{
 try {
-  console.log('ddd')
    return res.json(`${process.env.STRIPE_PUBLIC_KEY}`)
 
 } catch (err) {
