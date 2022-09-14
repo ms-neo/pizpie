@@ -1,7 +1,9 @@
 require('dotenv').config()
 const express = require('express')
-const connectDB = require('./config/dbConfig')
-const path = require('path')
+const mongoose = require('mongoose');
+const dbUri = process.env.MONGO_URI;
+// const connectDB = require('./config/dbConfig')
+// const path = require('path')
 const cors =require('cors')
 
 const app = express()
@@ -12,6 +14,20 @@ app.use(express.urlencoded({
 }))
 app.use(cors());
 //calling the mongoose connect function to fetch the data from the database
+const connectDB = async ()=>{
+    try {
+        await mongoose.connect(
+            `mongodb+srv://neona:${dbUri}@pizpiedb.powid.mongodb.net/pizpieDB?retryWrites=true&w=majority&ssl=true`
+        ,{
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        })
+        console.log(`connected to mongodb.....`)
+    } catch (err) {
+        console.log(err.message, 'err')
+        process.exit(1)
+    }
+}
 connectDB()
 
 
@@ -23,14 +39,6 @@ app.use('/api/payment-stripe', require('./routes/api/paymentRouter'))
 app.use('/api/products', require('./routes/api/productsRouter'))
 app.use('/api/users',require('./routes/api/userRouter'))
 
-if (process.env.NODE_ENV === 'production'){
-    // set static folder
-    app.use(express.static("client/build"));
-    
-    app.get('*', (req, res) => {
-      res.sendFile(path.resolve(__dirname,'client', 'build', 'index.html'));
-    });
-    }
     
 const port = process.env.PORT || 5000
 
