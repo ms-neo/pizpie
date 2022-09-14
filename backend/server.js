@@ -2,8 +2,6 @@ require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose');
 const dbUri = process.env.MONGO_URI;
-// const connectDB = require('./config/dbConfig')
-// const path = require('path')
 const cors =require('cors')
 
 const app = express()
