@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken")
-// const config = require('config')
+
 
 // to generate a token 
 const generateToken = (user) => {
