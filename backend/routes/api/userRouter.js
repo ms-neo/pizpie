@@ -83,7 +83,7 @@ userRouter.post('/signin', async (req, res) => {
             })
         }
         // generate web token to authorize the user
-        const token = generateToken(user)
+        const token = generateToken(user._id)
         console.log(token ,'sign in router')
         const userInfo ={
             _id:user._id,
