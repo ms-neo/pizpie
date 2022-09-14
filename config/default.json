@@ -1,4 +1,0 @@
-{
-"mongoUri":"mongodb+srv://neona:nona123@pizpiedb.powid.mongodb.net/pizpieDB?retryWrites=true&w=majority&ssl=true",
-"jwToken":"myLittlSecret"
-}
