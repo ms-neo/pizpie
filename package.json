@@ -2,7 +2,7 @@
   "name": "pizpie",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "backend/server.js",
   "engines": {
     "node": "14.20.0"
   },
