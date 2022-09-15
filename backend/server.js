@@ -53,9 +53,9 @@ if (process.env.NODE_ENV === 'production'){
     
 const port = process.env.PORT || 5000
 
-process.on('warning', (warning) => {
-    console.log(warning.stack);
-});
+// process.on('warning', (warning) => {
+//     console.log(warning.stack);
+// });
 
 app.listen(port, () => {
     console.log(`the server is working now in port ${port}`)
