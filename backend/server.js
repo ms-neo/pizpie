@@ -40,7 +40,7 @@ app.use('/api/products', require('./routes/api/productsRouter'))
 app.use('/api/users',require('./routes/api/userRouter'))
 
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, './client/build/index.html'));
+    res.sendFile('./client/build/index.html');
   });
 // if (process.env.NODE_ENV === 'production'){
 //     // set static folder
