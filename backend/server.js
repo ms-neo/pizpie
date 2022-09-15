@@ -39,9 +39,9 @@ app.use('/api/payment-stripe', require('./routes/api/paymentRouter'))
 app.use('/api/products', require('./routes/api/productsRouter'))
 app.use('/api/users',require('./routes/api/userRouter'))
 
-// app.get('*', (req, res) => {
-//     res.sendFile('./client/build/index.html');
-//   });
+app.get('*', (req, res) => {
+      res.sendFile(path.resolve(__dirname,'client', 'build', 'index.html'));
+  });
 // if (process.env.NODE_ENV === 'production'){
 //     // set static folder
 //     app.use(express.static("client/build"));

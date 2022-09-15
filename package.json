@@ -7,7 +7,6 @@
     "node": "14.20.0"
   },
   "scripts": {
-    "build": "cd client && npm run build",
     "start": "node server.js",
     "server": "cd backend && nodemon server.js",
     "client": "cd client && npm start",
