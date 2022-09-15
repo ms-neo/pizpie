@@ -70,9 +70,7 @@ cartRouter.post('/', isAuth, async (req, res) => {
         }
     } catch (err) {
         console.log(err)
-        return res.status(500).json({
-            message: "something went wrong"
-        })
+        return res.status(500).json(err)
     }
 })
 

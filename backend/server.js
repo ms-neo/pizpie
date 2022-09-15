@@ -50,6 +50,10 @@ app.use('/api/users',require('./routes/api/userRouter'))
     
 const port = process.env.PORT || 5000
 
+process.on('warning', (warning) => {
+    console.log(warning.stack);
+});
+
 app.listen(port, () => {
     console.log(`the server is working now in port ${port}`)
 })

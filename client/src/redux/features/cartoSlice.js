@@ -10,7 +10,7 @@ let user = ()=>{
 
 // post cart to monodb
 export const saveCart = createAsyncThunk('cart/saveCart',async (product,thunkAPI)=>{
-
+    console.log(user().token,"save cart")
     try {
         const {data} = await axios.post(`/api/cart`,product,{
             headers:{

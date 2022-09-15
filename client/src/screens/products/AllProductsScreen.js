@@ -16,7 +16,7 @@ const Products = () => {
   const dispatch =useDispatch()
 const {products} = useSelector(state=>state.products)
 const {user} =useSelector(state=>state.auth)
-
+console.log(user._id,"cart")
 useEffect(() => {
 dispatch(getProducts())
 }, [dispatch,getProducts])
