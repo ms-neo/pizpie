@@ -74,7 +74,7 @@ const handleDecClick = (product) =>{
   </PrdouctList>
 <TotalBox>
   <div>Subtotal : <span> {guestCartItems.reduce((a,c)=> a + c.qty ,0)} items</span></div>
- <div><h4>{guestCartItems.reduce((a,c)=> a + c.product.price * c.qty,0)}<span>SAR</span> </h4></div>
+ <div><h4>{guestCartItems.reduce((a,c)=> a + c.product.price * c.qty,0)}<span> SAR</span> </h4></div>
   <Button onClick={proceedPayment}>Proceed to buy</Button>
 </TotalBox>
      </Cart>

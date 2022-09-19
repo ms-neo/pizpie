@@ -5,7 +5,7 @@ const Header = () => {
   return (
     <Fragment>
  <Parent>
-    <HeadingPhoto src="../media/heading-Image.jpg" />
+    <HeadingPhoto src="https://i.imgur.com/SgVZgvh.jpg" />
     <OrangeRect></OrangeRect>
     <TopRosemary src="../media/top-rosemary.png"/>
     </Parent>
