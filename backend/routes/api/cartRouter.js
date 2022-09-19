@@ -7,7 +7,7 @@ const { isAuth } = require('../../utils')
 
 // POST cart to dATABASE
 cartRouter.post('/', isAuth, async (req, res) => {
-
+console.log(req.user)
     let product = {
         productId: req.body.product._id,
         name: req.body.product.name,
