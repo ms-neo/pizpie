@@ -5,9 +5,9 @@ const Header = () => {
   return (
     <Fragment>
  <Parent>
-    <HeadingPhoto src="../../media/heading-Image.jpg" />
+    <HeadingPhoto src="../media/heading-Image.jpg" />
     <OrangeRect></OrangeRect>
-    <TopRosemary src="../../media/top-rosemary.png"/>
+    <TopRosemary src="../media/top-rosemary.png"/>
     </Parent>
     </Fragment>
     
