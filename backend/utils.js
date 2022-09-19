@@ -6,7 +6,7 @@ const generateToken = (user) => {
  
 console.log(process.env.JWT_SECRET,'JWT_SECRET')
     return jwt.sign(
-   {id:user.id,
+   {id:user._id,
 name:user.name}
     ,
     process.env.JWT_SECRET, //need to search more
