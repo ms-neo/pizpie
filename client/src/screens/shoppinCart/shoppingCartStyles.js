@@ -95,7 +95,8 @@ button{
     height:30px;
     font-weight:500;
     font-size:1.3rem;
-    border:none
+    border:none;
+    cursor:pointer;
 }
 
 div:first-child{

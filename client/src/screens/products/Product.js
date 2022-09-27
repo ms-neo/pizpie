@@ -28,10 +28,6 @@ const {user} = useSelector(state=>state.auth)
 const qty =1;
 let currentItem ;
 
-if (cartItems){
-  currentItem = cartItems.products.find(x=> x.productId == id)
-}
-
 
 useEffect(() => {
 dispatch(getProduct(id))
@@ -39,7 +35,11 @@ dispatch(getProduct(id))
 
 
   const addToCartHandler = ()=>{
-    console.log(product,'qty save cart')
+   
+    if (cartItems){
+      currentItem = cartItems.products.find(x=> x.productId == id)
+    }
+    console.log(currentItem,'qty save cart')
     if (user){
       if (!currentItem || currentItem.quantity < 8) {
         dispatch(saveCart({product,qty}))
