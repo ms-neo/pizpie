@@ -1,7 +1,6 @@
 import {
     createSlice
 } from "@reduxjs/toolkit";
-import {toast} from 'react-toastify'
 
 const guestCart = JSON.parse(localStorage.getItem('guestCartItems'))
 const guestCartSlice = createSlice({
