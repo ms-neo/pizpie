@@ -75,8 +75,9 @@ navigate(`/order-details/${orderId}`)
           <p>order number</p>
         </div>
         <div>
-       <div onClick={()=>
-       goToOrderDetails(order._id)}>more details</div> 
+       <div 
+       onClick={()=>goToOrderDetails(order._id)}
+       className="more-details">more details</div> 
         </div>
       </Column2>
       </>

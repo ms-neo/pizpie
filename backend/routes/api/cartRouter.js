@@ -39,6 +39,7 @@ console.log(req.user)
                 return res.json(userCart)
 
             }  else {
+                if (check.quantity <8){
                 userCart = await MyCart.findOneAndUpdate({
                         user: req.user.id,
                         "products.productId": req.body.product._id
@@ -60,6 +61,7 @@ console.log(req.user)
                         }
                     })
             }
+        }
         }  else {
             userCart = new MyCart({
                 user: req.user.id,
@@ -82,6 +84,11 @@ cartRouter.put('/incQuantity', isAuth, async (req, res) => {
             user: req.user.id
         })
         if (userCart) {
+            const item =userCart.products.find(x=>x.productId == req.body.productId)
+            console.log(item,userCart,'item')
+            console.log(req.body.productId,'dd')
+
+            if ( item.quantity <=7 ) {
             userCart = await MyCart.findOneAndUpdate({
                 user: req.user.id,
                 "products.productId": req.body.productId
@@ -100,6 +107,7 @@ cartRouter.put('/incQuantity', isAuth, async (req, res) => {
                 }
             })
         }
+    }
         console.log(userCart, "after")
 
     } catch (err) {
@@ -118,6 +126,11 @@ cartRouter.put('/decQuantity', isAuth, async (req, res) => {
             user: req.user.id
         })
         if (userCart) {
+            const item =userCart.products.find(x=>x.productId == req.body.productId)
+            console.log(item,userCart,'item')
+            console.log(req.body.productId,'dd')
+
+            if ( item.quantity >1 ) {
             userCart = await MyCart.findOneAndUpdate({
                 user: req.user.id,
                 "products.productId": req.body.productId
@@ -137,6 +150,7 @@ cartRouter.put('/decQuantity', isAuth, async (req, res) => {
                 }
             })
         }
+    }
     } catch (err) {
         console.log(err)
         return res.status(500).json(err)

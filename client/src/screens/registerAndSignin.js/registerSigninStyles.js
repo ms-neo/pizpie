@@ -1,12 +1,17 @@
 import styled from "styled-components";
 
 export const Container =styled.div`
+
 `
 
 export const FormWrapper=styled.div`
 padding:10vh 20vh;
 width:600px;
-
+a{
+  color:red;
+  cursor:pointer;
+  text-decoration:none;
+}
 input[type=text]{
     width:60%;
 }
@@ -51,6 +56,10 @@ export const SignInContainer = styled.div `
 padding:19vh 20vh;
 display:grid;
 grid-template-columns:40% 50%;
+span{
+  color:red;
+  cursor:pointer;
+}
 @media (max-width: 768px) {
     padding:8vh 5vh;
     grid-template-columns:1fr;

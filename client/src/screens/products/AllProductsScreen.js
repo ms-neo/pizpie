@@ -10,12 +10,19 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getProducts } from '../../redux/features/productsSlice'
 import { saveCart } from '../../redux/features/cartoSlice'
 import { addToCart } from '../../redux/features/gusetCartSlice'
+import { toast } from 'react-toastify'
 
 const Products = () => {
   
   const dispatch =useDispatch()
 const {products} = useSelector(state=>state.products)
 const {user} =useSelector(state=>state.auth)
+const {cartItems} = useSelector(state=>state.cart)
+const {guestCartItems} = useSelector(state=>state.guestCart)
+
+let currentItem ;
+
+
 
 useEffect(() => {
 dispatch(getProducts())
@@ -24,13 +31,34 @@ dispatch(getProducts())
 
 const handleAddItem =product =>{
   let qty =1
+  // check if there's already less than 8 items in the cart
+
+
+  console.log(product._id,'product')
+  console.log(currentItem,'product')
 // only add one item to cart
   if (user){
+    if (cartItems){
+      currentItem = cartItems.products.find(x=> x.productId == product._id)
+    }
     //add it to user cart
+    if (!currentItem || currentItem.quantity < 8) {
     dispatch(saveCart({product,qty}))
+    toast.success("Item has been Added sucessfuly");
+    } else{
+      toast.error("you can't add more than 8 items of this product to cart")
+     }
   } else{
     // add it to guest cart
-    dispatch(addToCart({product,qty}))
+    if (guestCartItems){
+      currentItem = guestCartItems.find(x=> x.product._id == product._id)
+    }
+    if (!currentItem || currentItem.qty < 8) {
+      dispatch(addToCart({product,qty}))
+      toast.success("Item has been Added sucessfuly");
+      } else{
+        toast.error("you can't add more than 8 items of this product to cart")
+       }
   }
 }
 

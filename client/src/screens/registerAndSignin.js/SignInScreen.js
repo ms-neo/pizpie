@@ -26,12 +26,12 @@ const SignInScreen = () => {
             toast.error(message)
         }
         if (isSuccess || user) {
-            toast.success("yay")
+            toast.success("you successfully logged")
             dispatch(getCart(user._id))
             navigate('/')
         }
 
-    }, [isError, isSuccess, user,message,getCart])
+    }, [dispatch ,isError, isSuccess, user,message,getCart])
 
     const submitHandler = (e) => {
         e.preventDefault()   
@@ -86,10 +86,7 @@ const SignInScreen = () => {
                             <Button type='submit'>Sign In</Button>
                         </form>
                         <p>or you don't have account ? 
-                            <span>
-                            click
-                                <div onClick={handleSignUpClick} >here</div>
-                            </span>
+                                <span onClick={handleSignUpClick}> click here</span>
                         </p>
                     </div>
                     <PizzaIconWrapper>

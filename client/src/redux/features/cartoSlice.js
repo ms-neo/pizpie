@@ -10,7 +10,6 @@ let user = ()=>{
 
 // post cart to monodb
 export const saveCart = createAsyncThunk('cart/saveCart',async (product,thunkAPI)=>{
-    console.log(user().token,"save cart")
     try {
         const {data} = await axios.post(`/api/cart`,product,{
             headers:{
@@ -158,7 +157,6 @@ state.cartTotalAmount=state.cartItems.products.reduce((a,c)=> a + c.price * c.qu
         [saveCart.fulfilled]:(state,{payload})=>{
             state.isLoading=false
             state.isSuccess=true
-             console.log(payload,'red savecart')
             state.cartItems=payload
         },
         [saveCart.rejected]:(state,{payload})=>{
@@ -171,8 +169,6 @@ state.cartTotalAmount=state.cartItems.products.reduce((a,c)=> a + c.price * c.qu
         [getCart.fulfilled]:(state,{payload})=>{
             state.isLoading=false
             state.isSuccess=true
-             console.log(payload,'red get cart')
-
             state.cartItems=payload
         },
         [getCart.rejected]:(state,{payload})=>{

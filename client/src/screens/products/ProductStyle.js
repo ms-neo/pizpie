@@ -9,11 +9,17 @@ display:grid;
 grid-template-columns:repeat(2,1fr);
 width:800px;
 height:300px;
-padding:5vh;
+padding:7vh 6vh;
 grid-gap:8vh;
 box-shadow:0px 8px 15px #dddddd;
+.image-wrapper{
+    width:390px;
+    height:300px;
+
+}
 img{
     width:100%;
+    height:100%;
     object-fit:cover;
 }
 p{

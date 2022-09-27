@@ -40,10 +40,10 @@ const guestCartSlice = createSlice({
                     if (item.product._id === newItem.product._id)
                         // we now only mutate the qty of specific product
 
-                        if (checkQty > 5) {
+                        if (checkQty > 8) {
                             state.guestCartItems[findItem] = {
                                 ...state.guestCartItems[findItem], // we spread or make copy of the object
-                                qty: 5
+                                qty: 8
                             } //tehn change it qty  
                         } else {
                             state.guestCartItems[findItem] = {
@@ -52,11 +52,11 @@ const guestCartSlice = createSlice({
                             } //tehn change it qty
                         } 
                 })
-                toast.info(`${newItem.qty} Item has been Added to the guestCartItems`);
+                // toast.info(`${newItem.qty} Item has been Added to the guestCartItems`);
                 
             } else {
                 state.guestCartItems.push(newItem)
-                toast.success("Item has been Added sucessfuly");
+                // toast.success("Item has been Added sucessfuly");
             }
         } else{
             state.guestCartItems.push(payload)

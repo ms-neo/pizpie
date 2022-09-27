@@ -4,7 +4,7 @@ import Logo from '../../components/logo/Logo'
 import NavBar from '../../components/navBar/NavBar'
 import { Cart, CartContainer, DeleteBtn, ItemsWrapper, PrdouctList, ProductFlex, ProductInfo, QuantityBtnCart, TotalBox } from './shoppingCartStyles'
 import { Button} from '../../forms/formsStyles'
-import { useNavigate} from 'react-router-dom'
+import { Link, useNavigate} from 'react-router-dom'
 import {useDispatch,useSelector} from 'react-redux'
 import {  decrementItemQty, getCart, getTotals, incrementItemQty, removeItemFromCart, saveCart} from '../../redux/features/cartoSlice'
 
@@ -24,12 +24,12 @@ const {cartItems,cartTotalAmount}=cart
   }, [getCart, dispatch,user._id,cart._id]);
 
 const handleIncClick = (product) =>{
-  if (product.quantity <5 || product.quantity < product.countInStock){
+  if (product.quantity <= 7 || product.quantity < product.countInStock){
 dispatch(incrementItemQty(product))
   }
 }
 const handleDecClick = (product) =>{
-  if (product.quantity > 2){
+  if (product.quantity > 1){
 dispatch(decrementItemQty(product))
   }
 }
@@ -37,6 +37,11 @@ dispatch(decrementItemQty(product))
   const handleRmoveItem = (product) =>  {
     let productId =product.productId
     dispatch(removeItemFromCart(productId))
+  }
+
+  const goToProductPage =(product)=>{
+    console.log(product)
+    navigate(`/products/${product.productId}`)
   }
 
   const proceedPayment = ()=>{
@@ -67,9 +72,9 @@ dispatch(decrementItemQty(product))
       { cartItems.products.map(item =>
      <ItemsWrapper key={item.productId}>
    
-<ProductInfo>
+<ProductInfo onClick={()=>goToProductPage(item)}>
 <img src={item.image}/>
-<div>{item.name}</div>
+<div >{item.name}</div>
 </ProductInfo>
 <ProductFlex>
 <QuantityBtnCart>

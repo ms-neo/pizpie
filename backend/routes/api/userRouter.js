@@ -24,7 +24,7 @@ userRouter.post('/register', async (req, res) => {
             return res.status(400).json({
                     message: 'User is exist'
             })
-        } 
+        }else{
         // get the data from the body and add it to the user
         user = new User({
             name,
@@ -42,7 +42,7 @@ userRouter.post('/register', async (req, res) => {
             isAdmin:createdUser.isAdmin,
             token : generateToken(createdUser),
         })
-    
+        }
     } catch (err) {
         console.log(err.message)
        return res.status(500).send('Server Error')
