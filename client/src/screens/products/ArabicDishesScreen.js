@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import Header from '../../components/header/Header'
 import Logo from '../../components/logo/Logo'
 import MenuBar from '../../components/menuBar/MenuBar'

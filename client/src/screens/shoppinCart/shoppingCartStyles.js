@@ -64,13 +64,16 @@ display:flex;
 justify-content:flex-start;
 align-items:center;
 font-size:18px;
-
+cursor:pointer;
 img{
     object-fit:cover;
     width:70px;
     height:50px;
 margin-right:5vh;
 border-radius:1vh;
+}
+&:hover{
+    font-weight:500;
 }
 @media (max-width: 768px) {
     justify-content:flex-start;
@@ -122,6 +125,7 @@ export const DeleteBtn =styled.div`
 color:#F34107;
 font-weight:bold;
 width:50px;
+cursor:pointer;
 `
 export const AddedItemContainer =styled.div`
 margin:10vh 20vh;

@@ -19,13 +19,19 @@ a{
     text-decoration:none;
     color:#fff;
 }
+@media (max-width: 768px) {
+  h1{
+   font-size:2rem;
+}
+  }
+
 `
 
 export const HomeImg =styled.img`
 width:40%;
-margin:2vh 0;
+margin:2vw 0;
 @media (max-width: 768px) {
-    width: 70%;
+    width: 60%;
   }
 `
 

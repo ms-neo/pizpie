@@ -17,24 +17,28 @@ const ProfileScreen = () => {
         <div className='card'>
             <img src="../../media/skills.png"/>
             <h5>My Account</h5>
+            <span></span>
         </div>
         </Link>
         <Link to="/address">
         <div className='card'>
         <img src="../../media/address.png"/>
         <h5>Address</h5>
+        <span></span>
         </div>
         </Link> 
         <Link to="/payment-info">
         <div className='card'>
         <img src="../../media/credit-cards-payment.png"/>
         <h5>Payment</h5>
+        <span></span>
         </div>
         </Link>
         <Link to="/orders">
         <div className='card'>
         <img src="../../media/delivery-box.png"/>
         <h5>Orders</h5>
+        <span></span>
         </div>
         </Link>
     </ProfileWrapper>

@@ -55,8 +55,11 @@ navigate(`/order-details/${orderId}`)
       </>
       )}
       </div>
+   
       </ImgWrapper>
+      <div className='h-line'></div>
       </Column1>
+  
       <Column2>
         <div>
           <h5>order number</h5>
@@ -64,7 +67,7 @@ navigate(`/order-details/${orderId}`)
         </div>
         <div>
         <h5>Total amount</h5>
-          <p>{order.totalPrice}</p>
+          <p>{order.totalPrice} sar</p>
         </div>
         <div className='order-hide'>
         <h5>Ship to</h5>
@@ -72,12 +75,12 @@ navigate(`/order-details/${orderId}`)
         </div>
         <div className='order-hide'>
         <h5>Payment</h5>
-          <p>order number</p>
+          <p>Visa</p>
         </div>
         <div>
        <div 
        onClick={()=>goToOrderDetails(order._id)}
-       className="more-details">more details</div> 
+       className="more-details">more details ...</div> 
         </div>
       </Column2>
       </>

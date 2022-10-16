@@ -65,11 +65,11 @@ console.log(product,"p details")
        <div className='image-wrapper'>
 <img src={product.image}/>
 </div>
-<div >
+<div className='product-content'>
 <h2>{product.name}</h2>
 <p><span>ingredients:</span> {product.ingredients}</p>
 <p>Calories : <span>{product.calories} Kcal</span></p>
-<p>stars 4.5</p>
+{/* <p>stars 4.5</p> */}
 <h3>{product.price}$</h3>
 <Button onClick={addToCartHandler}>Add to Cart</Button>
 </div>

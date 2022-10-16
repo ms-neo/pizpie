@@ -42,7 +42,6 @@ align-items:center;
 justify-content:flex-start;
 
 img{
-   
     width:30%;
     height:50px;
     border-radius:1vh;

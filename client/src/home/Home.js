@@ -23,7 +23,7 @@ const Home = () => {
       <h2>Grab your favorit dish ...</h2>
       <HomeImg src="../media/pizza-homepage.png"></HomeImg>
       <HomeText>Our dishs are made from the best quality ingredients . we choose careflay our food from the healtheist and the cleanest vegtables and grains. to achieve the unforgatable taste and expericnce you might try.</HomeText>
-      <Button ><Link to='/products'>Shop Now</Link></Button>
+      <Button><Link to='/products'>Shop Now</Link></Button>
       </Fragment>
     </HomeContent>
     </Parent>

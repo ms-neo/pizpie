@@ -70,19 +70,19 @@ const handleAddItem =product =>{
  <NavBar/>
  <Container>
  <MenuBar/>
-    <ProductsContainer>
+  <ProductsContainer>
 <Card>
 {products.map(p=>
 <CardContent key={p._id}>
 <Link to={`/products/${p._id}`}>
 <img src={p.image}/>
 </Link>
-<h3>{p.name}</h3>
 <div>
-<p>Calories : <span>{p.calories}Kcal</span></p>
-<h5>stars 4.5</h5>
+<h2>{p.name}</h2>
+<h2>{p.price}$</h2>
 </div>
-<h4>{p.price}$</h4>
+<p>Calories : <span>{p.calories}Kcal</span></p>
+{/* <h5>stars 4.5</h5> */}
 <Button onClick={()=>handleAddItem(p)}>Add to Cart</Button>
 </CardContent>
 )}

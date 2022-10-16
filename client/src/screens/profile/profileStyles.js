@@ -41,15 +41,38 @@ export const ProfileContent =styled.div`
 display:grid;
 grid-template-columns:1fr;
 grid-gap:10vh;
+margin-top:2vh;
+font-weight:700;
+a{
+    color:black;
+    &:hover{
+        color:#F14C4C;;
+    }
+       &:focus{
+        color:#F14C4C;;
+        border-bottom:1px solid #ddd;
+    }
+
+}
+div{
+    padding:2vh;
+    ${'' /* background:red; */}
+ 
+
+}
 @media (max-width:768px){
     grid-template-columns:repeat(4,1fr); 
     grid-gap:2vh;
     margin-bottom:3vh;
+    div{
+    padding:0vh;
+}
 }
 
 `
 //profile page
 export const ProfileContainer=styled.div`
+margin-top:5vh;
 div{
     margin-bottom:3vh;
 }
@@ -77,7 +100,7 @@ export const ProfileWrapper =styled.div`
 display:grid;
 grid-template-columns:1fr 1fr;
 grid-gap:9vh;
-margin:3vh;
+margin:5vh;
 img{
     width:20%
 }
@@ -91,8 +114,26 @@ img{
     justify-content:center;
     align-items:center;
     grid-gap:1vh;
-
+    transition:.3s transform ease-in-out;
+    overflow: hidden;
+    &:hover{
+    transform:scale(1.2);
 }
+
+span{
+    transform:translate(150%,0);
+    transition:.3s transform ease-in-out;
+    width:50%;
+    height:2px;
+    background-color:red;
+  
+}
+&:hover span{
+    transform:translate(0,0);
+    transform:scale(1.2);
+}
+}
+
 @media (max-width:768px){
     grid-gap:2vh;
     .card{
@@ -100,6 +141,7 @@ img{
     }
 }
 `
+
 export const AddressInfo =styled.div`
 display:grid;
 grid-template-columns:1fr;
@@ -117,7 +159,6 @@ h3{
 }
 .userAdress-info{
     padding:5vh;
-
 }
 @media (max-width:768px){
 width:300px;
@@ -143,7 +184,7 @@ text-align:center;
 
 
 export const OrderContainer =styled.div`
-
+margin-top:5vh;
 `
 
 export const OrderGrid =styled.div`
@@ -171,10 +212,20 @@ export const Column1 =styled.div`
 width:150px;
 grid-gap:2vh;
 margin-bottom:2vh; 
+position:relative;
+.h-line{
+width:1px;
+height:140px;
+background-color:#ddd;
+position:absolute;
+top:0;
+right:0;
+
+}
 `
 export const ImgWrapper = styled.div`
     display:flex;
-    flex-wrap: wrap;
+    flex-direction:column;
     justify-content:space-between;
 img{
     width:40px;
@@ -191,6 +242,10 @@ grid-template-rows:repeat(2,1fr);
 grid-gap:4vh;
 .more-details{
     cursor:pointer;
+    &:hover{
+    color:red;
+    font-weight:500;
+    }
 }
 @media (max-width:768px){
     grid-template-columns:repeat(1,1fr);
@@ -230,6 +285,7 @@ margin-right:5vh;
 .card-content{
     margin-top:2vh;
 }
+
 @media (max-width:768px){
     width:100%;
 }
@@ -237,10 +293,8 @@ margin-right:5vh;
 
 export const FormContainer =styled.div`
 width:300px;
-
 h3{
     cursor:pointer;
     margin-top:4vh;
 }
-
 `

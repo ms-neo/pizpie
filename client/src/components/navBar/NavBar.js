@@ -45,6 +45,7 @@ const goToCart = ()=>{
    <div onClick={()=>navigate('/address')}>Address</div>
    <div onClick={()=>navigate('/payment-info')}>Payment</div>
    <div onClick={()=>navigate('/orders')}>Orders</div>
+   <hr/>
    <div onClick={handleClick}> LogOut</div>
    </DropDownContent> 
     </DropDown>
@@ -54,11 +55,15 @@ const goToCart = ()=>{
    <NavBarItems>
    <NavBarImg src="../../media/user.png"/>
     <Link to="/signin"><p>Log In</p></Link>
+ 
     </NavBarItems>
+
     </Fragment>
     }
 </div>
+ 
     </NavBarItems>
+    <span></span>
     </NavLinks>
     <NavLinks>
     {!user? <>
@@ -69,8 +74,11 @@ const goToCart = ()=>{
     <div onClick={goToCart}> 
     <NavBarImg src="../../media/shopping-cart.png"/>Cart
      </div>
+     
     </div>
+   
     </NavBarItems>
+ 
     </> :<>
     <NavBarItems>
       {/* to show the red circle if the cart is not empty when the user is logged */}
@@ -79,9 +87,13 @@ const goToCart = ()=>{
     <div onClick={goToCart}> 
     <NavBarImg src="../../media/shopping-cart.png"/>Cart
      </div>
+
     </div>
+
     </NavBarItems>
+   
     </>}
+    <span></span>
     </NavLinks>
     </Container>
   )
