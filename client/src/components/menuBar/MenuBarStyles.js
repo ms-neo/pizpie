@@ -7,10 +7,10 @@ align-items:center;
 justify-content:space-around;
 text-align:center;
 height:70vh;
-${'' /* background:red; */}
+
 @media (max-width: 768px) {
-${'' /* width:10%; */}
    flex-direction:row;
+   justify-content:center;
    height:auto;
   }
 `
@@ -22,6 +22,7 @@ align-items:center;
 justify-content:center;
 width:150px;
   height:300px;
+
 a{
     text-decoration:none;
     color:#000;
@@ -34,6 +35,7 @@ a{
   width:90px;
   height:100px;
 font-size:14px;
+justify-content:flex-end;
   }
 `
 
