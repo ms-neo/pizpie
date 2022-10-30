@@ -4,7 +4,7 @@ import Logo from '../../components/logo/Logo'
 import NavBar from '../../components/navBar/NavBar'
 import { Cart, CartContainer, DeleteBtn, ItemsWrapper, PrdouctList, ProductFlex, ProductInfo, QuantityBtnCart, TotalBox } from './shoppingCartStyles'
 import { Button} from '../../forms/formsStyles'
-import { useNavigate} from 'react-router-dom'
+import { Link, useNavigate} from 'react-router-dom'
 import {useDispatch,useSelector} from 'react-redux'
 import { decreaseQuantity, getCart, increaseQuantity, removeItemFromCart, saveCart} from '../../redux/features/gusetCartSlice'
 import {toast} from 'react-toastify'
@@ -71,6 +71,10 @@ const handleDecClick = (product) =>{
 <h3>{ item.product.price * item.qty}$</h3>
 </ProductFlex>
 </ItemsWrapper>)}
+  <Link to="/products">
+  <div className='line'></div>
+  back to shopping {'>>'}
+  </Link>
   </PrdouctList>
 <TotalBox>
   <div>Subtotal : <span> {guestCartItems.reduce((a,c)=> a + c.qty ,0)} items</span></div>

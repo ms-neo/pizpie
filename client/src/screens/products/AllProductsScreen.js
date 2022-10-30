@@ -21,7 +21,7 @@ const {cartItems} = useSelector(state=>state.cart)
 const {guestCartItems} = useSelector(state=>state.guestCart)
 
 let currentItem ;
-
+console.log(cartItems,'cartItems')
 
 
 useEffect(() => {
@@ -33,14 +33,16 @@ const handleAddItem =product =>{
   let qty =1
   // check if there's already less than 8 items in the cart
 
-
+  console.log(cartItems,'cartItems')
   console.log(product._id,'product')
   console.log(currentItem,'product')
+ 
 // only add one item to cart
   if (user){
-    if (cartItems){
+    if (cartItems.length !== 0){
       currentItem = cartItems.products.find(x=> x.productId == product._id)
     }
+    console.log(currentItem,'cur')
     //add it to user cart
     if (!currentItem || currentItem.quantity < 8) {
     dispatch(saveCart({product,qty}))
@@ -64,8 +66,8 @@ const handleAddItem =product =>{
 
 
   return (
-    <Fragment>
-    <Header/>
+<Fragment>
+ <Header/>
  <Logo/>
  <NavBar/>
  <Container>

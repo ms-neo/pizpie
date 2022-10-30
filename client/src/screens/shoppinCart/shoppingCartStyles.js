@@ -7,13 +7,20 @@ padding:0 5vh;
 
 .line{
     margin:3vh 0;
-    width:100%;
-    border:1px solid #ddd;
+    width:90%;
+    border:1px solid #F0F0F0;
 }
 
 @media (max-width: 768px) {
     padding:0vh;
-   
+  }
+  a{
+    padding:2vh 0;
+    text-decoration:none;
+    color:#F14C4C;
+    &:hover{
+        text-decoration:underline;  
+    }
   }
 `
 export const Cart =styled.div`

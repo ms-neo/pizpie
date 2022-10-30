@@ -82,7 +82,7 @@ const goToCart = ()=>{
     </> :<>
     <NavBarItems>
       {/* to show the red circle if the cart is not empty when the user is logged */}
-   {(cartItems || cartItems.products === []  )&& <div className='red-cycle'></div>}
+   {(cartItems.length !== 0|| cartItems.products === []  )&& <div className='red-cycle'></div>}
    <div>
     <div onClick={goToCart}> 
     <NavBarImg src="../../media/shopping-cart.png"/>Cart

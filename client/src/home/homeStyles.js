@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const Parent =styled.div`
 display:grid;
 grid-template-columns:20% 70%;
+min-height:auto;
 
 @media (max-width: 768px) {
     grid-template-columns: 1fr;

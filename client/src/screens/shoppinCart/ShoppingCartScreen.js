@@ -71,7 +71,7 @@ dispatch(decrementItemQty(product))
      <PrdouctList>
       { cartItems.products.map(item =>
      <ItemsWrapper key={item.productId}>
-   
+
 <ProductInfo onClick={()=>goToProductPage(item)}>
 <img src={item.image}/>
 <div >{item.name}</div>
@@ -85,7 +85,11 @@ dispatch(decrementItemQty(product))
 <div><DeleteBtn onClick={()=>handleRmoveItem(item)}>Delete</DeleteBtn></div>
 <div><h3>{ item.price * item.quantity}$</h3></div>
 </ProductFlex>
-</ItemsWrapper>    )}
+</ItemsWrapper>    )} 
+  <Link to="/products">
+  <div className='line'></div>
+  back to shopping {'>>'}
+  </Link>
     </PrdouctList>
 <TotalBox>
   <div>Subtotal : <span> {cartItems.products.reduce((a,c)=> a + c.quantity ,0)} items</span></div>
@@ -94,6 +98,7 @@ dispatch(decrementItemQty(product))
 </TotalBox>
      </Cart>
      </Fragment>}
+   
      </CartContainer>
     </Fragment>
   )

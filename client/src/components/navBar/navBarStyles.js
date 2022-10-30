@@ -5,11 +5,11 @@ display:flex;
 justify-content:flex-end;
 align-items:center;
 padding:0 40vh;
-margin-top:3vh;
-
+margin-top:5vh;
 
 @media (max-width: 768px) {
     padding:0 6vh;
+    justify-content:center;
   }
 `
 
@@ -72,7 +72,6 @@ align-items:center;
 
 export const NavBarImg =styled.img`
 width:15%;
-${'' /* margin:0 1vh; */}
 padding:0 1vh;
 object-fit:cover;
 `

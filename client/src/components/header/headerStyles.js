@@ -13,12 +13,12 @@ margin-bottom:1vh;
 export const OrangeRect =styled.div`
 width:80px;
 height:500px;
-background-color:red;
+background-color:#F14C4C;
 position:absolute;
 top:0;
 right:15vh;
 z-index:2;
-opacity:.9;
+
 @media (max-width: 768px) {
     display: none;
   }
