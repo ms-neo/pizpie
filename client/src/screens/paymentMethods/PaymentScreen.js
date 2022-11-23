@@ -152,7 +152,7 @@ options={{ style: {
     <OrderSummeryContainer>
     <div className="vline"></div>
       <h3>Order Summry </h3>
-      <p><span>shipping fee : </span>22.45 SAR</p>
+      {/* <p><span>shipping fee : </span>22.45 SAR</p> */}
       <p><span>Total : </span>{cart.cartTotalAmount} SAR</p>
       <Button onClick={confirmPayment} disabled={!stripe}>Proceed Payment</Button>
     </OrderSummeryContainer>

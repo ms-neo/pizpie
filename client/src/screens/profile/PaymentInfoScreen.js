@@ -27,13 +27,14 @@ const PaymentInfoScreen = () => {
   const [click, setClick] = useState(false)
 
  useEffect(() => {
+  dispatch(getCreditCards())
   if(isError){
     toast.error(message)
   } else if(isSuccess){
-    toast.success("You've successfuly added new card ")
+    // toast.success("You've successfuly added new card ")
   } 
-  dispatch(getCreditCards())
- }, [isError,isSuccess,dispatch,reset])
+
+ }, [isError,isSuccess,dispatch,reset,message])
  
   const handleType = type =>{
     console.log(type)
@@ -113,8 +114,8 @@ onChange={e => setCardNumber(e.target.value)}
   required
 />
    <Input
-type="tel"
-name="number"
+type="text"
+name="name"
 val={name}
 placeholder="Name on the card"
 onChange={e => setName(e.target.value)}/>

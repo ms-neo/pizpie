@@ -6,6 +6,7 @@ let user = ()=>{
 }
 
 export const getStripeSecret= createAsyncThunk('payment/getStripe', async (amount,thunkAPI)=>{
+  console.log('stripe')
     try {
         const {data} =await axios.post('/api/payment-stripe',amount,{
             headers:{Authorization :`${user().token}`}
@@ -21,6 +22,7 @@ export const getStripeSecret= createAsyncThunk('payment/getStripe', async (amoun
 
   
    export const getStripeKey= createAsyncThunk('payment/getStripeKey', async (amount,thunkAPI)=>{
+    console.log('stripe2')
     try {
         const {data} =await axios.get('/api/payment-stripe/key',{
             headers:{Authorization :`${user().token}`}

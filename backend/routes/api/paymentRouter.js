@@ -39,6 +39,7 @@ res.status(400).json({message:"this card numebr is already exist"})
       user:req.user.id
     }) 
 await card.save()
+
     return res.json(card)
   }
   } catch (err) {
@@ -48,7 +49,7 @@ await card.save()
 
 // POST PAYMNET TO STRIPE 
 paymentRouter.post('/',isAuth, async (req,res)=>{
- 
+  console.log(req.user.id,'strip back')
     const  {amount}  = req.body;
     console.log(req.body,'strip back')
 try {
@@ -61,13 +62,14 @@ try {
       },
     });
     const client_secret=paymentIntent.client_secret
+  
     return res.status(200).send({
       client_secret,
     });
 
 } catch (error) {
-  console.log(error.message)
-  res.status(500).json(error.message)
+  console.log(error.message ,'err')
+return res.status(500).json(error.message)
 }
 })
 

@@ -27,13 +27,12 @@ const {user ,message ,isLoading,isSuccess ,isError}= useSelector(state=>state.au
 useEffect(() => {
   if (isError){
     toast.error(message)
-  } else
-   if (isSuccess || user){
+  } else if (isSuccess || user){
     disaptch(reset())
     navigate('/signin')
   }
   
-}, [user ,message ,isLoading,isSuccess ,isError,disaptch])
+}, [user ,message ,isLoading,isSuccess ,isError,disaptch,reset])
 
 
 const handleSumbit = e =>{

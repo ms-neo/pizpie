@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 let user = ()=>{
   return  JSON.parse(localStorage.getItem('user'))
@@ -64,6 +65,8 @@ const creditCardSlice =createSlice({
   [addCreditCard.fulfilled]:(state,{payload})=>{
     state.isLoading=false;
     state.isSuccess=true;
+    toast.success("You've successfuly added new card ")
+
     state.creditCard=payload;
   },
   [addCreditCard.rejected]:(state,{payload})=>{

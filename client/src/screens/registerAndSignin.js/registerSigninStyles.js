@@ -49,6 +49,9 @@ font-weight:bold;
 font-size:1rem;
 margin:2vh 0;
 cursor:pointer;
+:hover{
+  background-color:#A6C42B;
+}
 `
 
 //sign in style
