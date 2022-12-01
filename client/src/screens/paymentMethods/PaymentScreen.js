@@ -2,11 +2,11 @@ import React, { Fragment, useEffect, useState } from 'react'
 import Header from '../../components/header/Header'
 import Logo from '../../components/logo/Logo'
 import NavBar from '../../components/navBar/NavBar'
-import { Button, Input } from '../../forms/formsStyles'
+import { Button} from '../../forms/formsStyles'
 import {useDispatch, useSelector} from 'react-redux'
 import { AddressContainer, Container, DisplayAddress, ExpiryEleContainer, OrderSummeryContainer, PaymentContainer } from './PaymentStyle'
 import { clearCart, getTotals } from '../../redux/features/cartoSlice'
-import { CardCvcElement, CardElement, CardExpiryElement, CardNumberElement, useElements, useStripe } from "@stripe/react-stripe-js";
+import { CardCvcElement, CardExpiryElement, CardNumberElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import {  useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { createOrder } from '../../redux/features/orderSlice'
@@ -36,11 +36,13 @@ const {client_secret}=stripeSecret
   useEffect(() => {
 
     dispatch(getTotals())
-      if (performance.getEntriesByType("navigation")[0].type === "reload"){
-        dispatch(getTotals())
+      // if (performance.getEntriesByType("navigation")[0].type === "reload"){
+        // dispatch(getTotals())
         console.log(cartTotalAmount,'pppp')
        dispatch(getStripeSecret({amount:amount}))
-      }
+      // } else {
+        // dispatch(getStripeSecret({amount:amount}))
+      // }
   
     if (user === null){
       navigate('/signin')
@@ -86,7 +88,7 @@ dispatch(createOrder({...cart,
   total:cart.cartTotalAmount,
 }))
 dispatch(clearCart(cartItems._id))
-    toast.success('your order has been fullfilled')
+    toast.success('your order has been placed')
     navigate('/order-placed')
     dispatch(reset())
   }
@@ -120,7 +122,7 @@ const inputStyle = {
     <Container>
     <div>
     <PaymentContainer>
-    <h3>Add your cridetc card</h3>
+    <h3>Add your credit card :</h3>
 <CardNumberElement className='payment-input' 
 options={{ style: {
           base: inputStyle,
@@ -141,7 +143,7 @@ options={{ style: {
     </PaymentContainer>
     </div>
     <AddressContainer>
-    <h3>Deliver to this address</h3>
+    <h3>Deliver to this address :</h3>
     <DisplayAddress>
     <UserAddress/>
     </DisplayAddress>
@@ -153,8 +155,8 @@ options={{ style: {
     <div className="vline"></div>
       <h3>Order Summry </h3>
       {/* <p><span>shipping fee : </span>22.45 SAR</p> */}
-      <p><span>Total : </span>{cart.cartTotalAmount} SAR</p>
-      <Button onClick={confirmPayment} disabled={!stripe}>Proceed Payment</Button>
+      <h3><span>Total : </span><span className='sar'>SR</span> {cart.cartTotalAmount}</h3>
+      <Button onClick={confirmPayment} disabled={!stripe}>Place your order</Button>
     </OrderSummeryContainer>
     </div>
     </Container>

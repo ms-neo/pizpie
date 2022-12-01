@@ -61,20 +61,17 @@ dispatch(decrementItemQty(product))
     <Logo/>
      <NavBar/>
      <CartContainer>
-     <h2>Shopping Cart</h2>
-     <div className='line'></div>
     {(!cartItems || cartItems.length === 0 )? 
-    <div>Your Cart Is empty</div>
+    <h2>Your Cart Is empty .</h2>
     : 
      <Fragment>
      <Cart>
      <PrdouctList>
       { cartItems.products.map(item =>
      <ItemsWrapper key={item.productId}>
-
 <ProductInfo onClick={()=>goToProductPage(item)}>
 <img src={item.image}/>
-<div >{item.name}</div>
+<p>{item.name}</p>
 </ProductInfo>
 <ProductFlex>
 <QuantityBtnCart>
@@ -83,22 +80,21 @@ dispatch(decrementItemQty(product))
 <button onClick={()=>handleDecClick(item)}>-</button>
 </QuantityBtnCart>
 <div><DeleteBtn onClick={()=>handleRmoveItem(item)}>Delete</DeleteBtn></div>
-<div><h3>{ item.price * item.quantity}$</h3></div>
+<div><h3><span className='sar'>SR</span> { item.price * item.quantity}</h3></div>
 </ProductFlex>
 </ItemsWrapper>    )} 
-  <Link to="/products">
-  <div className='line'></div>
-  back to shopping {'>>'}
-  </Link>
     </PrdouctList>
 <TotalBox>
   <div>Subtotal : <span> {cartItems.products.reduce((a,c)=> a + c.quantity ,0)} items</span></div>
- <div><h4>{cartItems.products.reduce((a,c)=> a + c.price * c.quantity,0)} <span>SAR</span> </h4></div>
+ <div><h4><span className='sar'>SR</span> {cartItems.products.reduce((a,c)=> a + c.price * c.quantity,0)}</h4></div>
   <Button onClick={proceedPayment}>Proceed to buy</Button>
 </TotalBox>
      </Cart>
      </Fragment>}
-   
+     <Link to="/products">
+  <div className='line'></div>
+  Continue shopping {'>>'}
+  </Link>
      </CartContainer>
     </Fragment>
   )

@@ -10,7 +10,10 @@ padding:0 5vh;
     width:90%;
     border:1px solid #F0F0F0;
 }
-
+.sar{
+    font-weight:500;
+    font-size:1rem;
+}
 @media (max-width: 768px) {
     padding:0vh;
   }
@@ -37,6 +40,7 @@ display:grid;
 grid-template-columns:1fr 1fr;
 align-items:center;
 margin:1vh 3vh;
+
 @media (max-width: 768px) {
     grid-template-columns:1fr;
     margin-top:5vh;
@@ -79,11 +83,15 @@ img{
 margin-right:5vh;
 border-radius:1vh;
 }
+p{
+    text-transform: capitalize; 
+}
 &:hover{
     font-weight:500;
 }
 @media (max-width: 768px) {
     justify-content:flex-start;
+
     img{
         width:20%  
     }
@@ -93,6 +101,7 @@ border-radius:1vh;
 export const PrdouctList = styled.div`
 display:grid;
 grid-template-columns:1fr;
+
 
 `
 
@@ -164,6 +173,7 @@ width:30%
 export const ProductFlex =styled.div`
 display:grid;
 grid-template-columns:repeat(3,1fr);
+align-items:baseline;
 div{
     margin:0 3vh;
 }

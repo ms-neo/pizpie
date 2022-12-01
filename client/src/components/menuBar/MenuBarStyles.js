@@ -22,7 +22,9 @@ align-items:center;
 justify-content:center;
 width:150px;
   height:300px;
-
+p{
+  text-transform:capitalize;
+}
 a{
     text-decoration:none;
     color:#000;

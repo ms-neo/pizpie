@@ -3,6 +3,10 @@ import styled from "styled-components";
 export const ProductContaienr =styled.div`
 padding:4vh 10vh;
 height:auto;
+.sar{
+    font-weight:500;
+    font-size:1rem;
+}
 @media (max-width:768px){
     padding:4vh 2vh;
 }
@@ -31,9 +35,16 @@ img{
 }
 p{
     margin:3vh 0;
+    text-transform:capitalize;
+}
+h2{
+    text-transform:capitalize;
 }
 h3{
     margin:10px 0;
+}
+span{
+    font-weight:700;
 }
 button{
     width:100%

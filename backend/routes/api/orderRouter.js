@@ -13,7 +13,7 @@ const {orderItems,userAddress,total} =req.body
 // to get the date for placed order
 const date = new Date()
 let day = date.getDate()
-let month =date.getMonth()
+let month =date.getMonth() + 1
 let year = date.getFullYear()
 let placeOrderDate = day+"-"+ month+"-"+year;
 

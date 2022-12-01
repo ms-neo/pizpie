@@ -12,6 +12,10 @@ grid-template-columns:35% 25% 50%;
     height:300px;
     background:#ddd;
 }
+.sar{
+    font-weight:500;
+    font-size:1rem;
+}
 @media (max-width:768px){
     grid-template-columns:1fr;
     margin:8vh 6vh;

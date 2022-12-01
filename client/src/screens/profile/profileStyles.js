@@ -13,6 +13,10 @@ margin:5vh 15vh;
     width:100%;
     border:1px solid #ddd;
 }
+.sar{
+    font-weight:500;
+    font-size:1rem;
+}
 a{
     text-decoration:none;
     color:#000;
@@ -196,9 +200,11 @@ width:700px;
 height:120px;
 box-shadow:10px 10px 20px #ddd;
 margin-bottom:10vh;
-h5{
+h4{
     margin-bottom:1vh;
-    color:#818D97;
+}
+p{
+    font-size:15px;
 }
 @media (max-width:768px){
     grid-template-columns:1fr 1fr;
@@ -227,7 +233,9 @@ export const ImgWrapper = styled.div`
     display:flex;
     flex-direction:column;
     justify-content:space-between;
+ 
 img{
+    margin-top:1vh;
     width:40px;
     height:40px;
     object-fit:cover;
@@ -242,9 +250,10 @@ grid-template-rows:repeat(2,1fr);
 grid-gap:4vh;
 .more-details{
     cursor:pointer;
+    font-weight:500;
     &:hover{
     color:red;
-    font-weight:500;
+    font-size:18px;
     }
 }
 @media (max-width:768px){

@@ -4,7 +4,10 @@ export const Container =styled.div`
 display:grid;
 grid-template-columns:20% 60%;
 padding-bottom:5vh;
-
+.sar{
+    font-weight:500;
+    font-size:1rem;
+}
 @media (max-width:768px){
     grid-template-columns:1fr;
 }
@@ -41,6 +44,7 @@ div{
 }
 h2{
     font-size:1.2rem;
+    text-transform: capitalize; 
 }
 p{
     font-size:14px;

@@ -6,7 +6,7 @@ import { Cart, CartContainer, DeleteBtn, ItemsWrapper, PrdouctList, ProductFlex,
 import { Button} from '../../forms/formsStyles'
 import { Link, useNavigate} from 'react-router-dom'
 import {useDispatch,useSelector} from 'react-redux'
-import { decreaseQuantity, getCart, increaseQuantity, removeItemFromCart, saveCart} from '../../redux/features/gusetCartSlice'
+import { decreaseQuantity, getCart, increaseQuantity, removeItemFromCart} from '../../redux/features/gusetCartSlice'
 import {toast} from 'react-toastify'
 
 const GuestCart = () => {
@@ -51,7 +51,7 @@ const handleDecClick = (product) =>{
      <NavBar/>
      <CartContainer>
     { guestCartItems.length === 0? 
-    <div>Your Cart Is empty</div>:
+    <h2>Your Cart Is empty .</h2>:
      <Fragment>
      <Cart>
      <PrdouctList>
@@ -59,7 +59,7 @@ const handleDecClick = (product) =>{
      <ItemsWrapper key={item._id}>
 <ProductInfo>
 <img src={item.product.image}/>
-<h4>{item.product.name}</h4>
+<p>{item.product.name}</p>
 </ProductInfo>
 <ProductFlex>
 <QuantityBtnCart>
@@ -68,21 +68,21 @@ const handleDecClick = (product) =>{
 <button onClick={()=>handleDecClick(item)}>-</button>
 </QuantityBtnCart>
 <DeleteBtn onClick={()=>handleRmoveItem(item)}>Delete</DeleteBtn>
-<h3>{ item.product.price * item.qty}$</h3>
+<h3><span className='sar'>SR</span> {item.product.price * item.qty}</h3>
 </ProductFlex>
 </ItemsWrapper>)}
-  <Link to="/products">
-  <div className='line'></div>
-  back to shopping {'>>'}
-  </Link>
   </PrdouctList>
 <TotalBox>
   <div>Subtotal : <span> {guestCartItems.reduce((a,c)=> a + c.qty ,0)} items</span></div>
  <div><h4>{guestCartItems.reduce((a,c)=> a + c.product.price * c.qty,0)}<span> SAR</span> </h4></div>
   <Button onClick={proceedPayment}>Proceed to buy</Button>
 </TotalBox>
-     </Cart>
+     </Cart>  
      </Fragment>}
+     <Link to="/products">
+  <div className='line'></div>
+  Continue shopping {'>>'}
+  </Link>
      </CartContainer>
     </Fragment>
   )

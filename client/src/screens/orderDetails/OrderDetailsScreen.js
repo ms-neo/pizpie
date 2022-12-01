@@ -34,8 +34,8 @@ const {orderItems ,userAddress}=order
   <PlaceOrderContainer>
   <div>
   <OrderWrapper>
-   <h4>Ordered on {order.date}</h4> 
- <h4>Order #{order.orderId}</h4>
+  <div>Ordered on : <h4> {order.date}</h4> </div>
+ <div>Order number :<h4>{order.orderId}</h4></div>
   </OrderWrapper>
   <div className='line'>
   </div>
@@ -47,7 +47,7 @@ const {orderItems ,userAddress}=order
     <p>{item.name}</p>
     </div>
     <p>{item.quantity}X</p>
-    <h3>{item.price} $</h3>
+    <h3><span className='sar'>SR</span> {item.price} </h3>
     </CartItems>
     )}
     </OrderItemsContainer>
@@ -65,15 +65,15 @@ const {orderItems ,userAddress}=order
     </div>
     <div className='line'></div>
     </div>
-    <div>
+    {/* <div>
     <h4>Payment Method</h4>
     <p> <img src='../../media/visa.png'/> Visa ending on 337</p>
     <div className='line'></div>
-    </div>
-    <h4>order summery</h4>
+    </div> */}
+    <h4>Total </h4>
     {/* <div>subtotal : {order.totalPrice} SAR</div>
     <div>Shipping price : {order.totalPrice} SAR</div> */}
-    <div>Total : {order.totalPrice} SAR</div>
+    <h3><span className='sar'>SR</span> {order.totalPrice}</h3>
 
   </OrderSummeryContainer>
     </PlaceOrderContainer>

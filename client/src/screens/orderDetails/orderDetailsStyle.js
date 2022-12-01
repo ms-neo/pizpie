@@ -9,6 +9,10 @@ margin :3vh 10vh;
     background:#ddd;
     margin:2vh 0;
 }
+.sar{
+    font-weight:500;
+    font-size:1rem;
+}
 @media (max-width:768px){
     margin :3vh 5vh;
     
@@ -19,6 +23,7 @@ export const OrderWrapper=styled.div`
 margin:2vh 0;
 display:flex;
 justify-content:space-between;
+
 @media (max-width:768px){
     flex-direction:column;
 }

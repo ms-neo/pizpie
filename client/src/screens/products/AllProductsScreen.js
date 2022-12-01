@@ -21,8 +21,6 @@ const {cartItems} = useSelector(state=>state.cart)
 const {guestCartItems} = useSelector(state=>state.guestCart)
 
 let currentItem ;
-console.log(cartItems,'cartItems')
-
 
 useEffect(() => {
 dispatch(getProducts())
@@ -46,7 +44,7 @@ const handleAddItem =product =>{
     //add it to user cart
     if (!currentItem || currentItem.quantity < 8) {
     dispatch(saveCart({product,qty}))
-    toast.success("Item has been Added sucessfuly");
+    toast.success("Item has been successfully added.");
     } else{
       toast.error("you can't add more than 8 items of this product to cart")
      }
@@ -57,7 +55,7 @@ const handleAddItem =product =>{
     }
     if (!currentItem || currentItem.qty < 8) {
       dispatch(addToCart({product,qty}))
-      toast.success("Item has been Added sucessfuly");
+      toast.success("Item has been successfully added.");
       } else{
         toast.error("you can't add more than 8 items of this product to cart")
        }
@@ -81,7 +79,7 @@ const handleAddItem =product =>{
 </Link>
 <div>
 <h2>{p.name}</h2>
-<h2>{p.price}$</h2>
+<h2><span className='sar'>SR</span> {p.price}</h2>
 </div>
 <p>Calories : <span>{p.calories}Kcal</span></p>
 {/* <h5>stars 4.5</h5> */}

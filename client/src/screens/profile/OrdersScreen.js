@@ -46,7 +46,8 @@ navigate(`/order-details/${orderId}`)
      <Column1>
      <ImgWrapper>
      <div>
-      <h5>Order placed <span><p>{order.date}</p></span></h5>
+      <h4>Order placed <span></span></h4>
+      <p>{order.date}</p>
       </div>
     <div className='img-wrapper'>
       {order.orderItems.map(item =>
@@ -62,19 +63,21 @@ navigate(`/order-details/${orderId}`)
   
       <Column2>
         <div>
-          <h5>order number</h5>
+          <h4>order number</h4>
           <p>{order.orderId}</p>
         </div>
         <div>
-        <h5>Total amount</h5>
-          <p>{order.totalPrice} sar</p>
+        <h4>Total amount</h4>
+          <h4><span className='sar'>SR</span> {order.totalPrice}</h4>
         </div>
         <div className='order-hide'>
-        <h5>Ship to</h5>
-          <p>{order.userAddress.fullName}</p>
+        <h4>Ship to</h4>
+          <p>{order.userAddress.address}</p>
+          <p>{order.userAddress.city}</p>
+          <p>{order.userAddress.postalCode}</p>
         </div>
         <div className='order-hide'>
-        <h5>Payment</h5>
+        <h4>Payment</h4>
           <p>Visa</p>
         </div>
         <div>

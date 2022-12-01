@@ -118,6 +118,7 @@ cartRouter.put('/incQuantity', isAuth, async (req, res) => {
 })
 
 
+
 // to increase the qunntity 
 cartRouter.put('/decQuantity', isAuth, async (req, res) => {
 
