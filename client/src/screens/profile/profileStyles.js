@@ -247,7 +247,7 @@ export const Column2 =styled.div`
 display:grid;
 grid-template-columns:repeat(3,1fr);
 grid-template-rows:repeat(2,1fr);
-grid-gap:4vh;
+grid-gap:2vh;
 .more-details{
     cursor:pointer;
     font-weight:500;

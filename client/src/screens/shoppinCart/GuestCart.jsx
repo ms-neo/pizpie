@@ -35,6 +35,11 @@ const handleDecClick = (product) =>{
     dispatch(removeItemFromCart(product))
   }
 
+  const goToProductPage =(product)=>{
+    console.log(product)
+    navigate(`/products/${product.product._id}`)
+  }
+
   const proceedPayment = ()=>{
     if (!user){
       navigate('/signin')
@@ -56,8 +61,8 @@ const handleDecClick = (product) =>{
      <Cart>
      <PrdouctList>
       { guestCartItems.map(item =>
-     <ItemsWrapper key={item._id}>
-<ProductInfo>
+     <ItemsWrapper key={item.product._id}>
+<ProductInfo onClick={()=>goToProductPage(item)}>
 <img src={item.product.image}/>
 <p>{item.product.name}</p>
 </ProductInfo>

@@ -87,7 +87,7 @@ dispatch(decrementItemQty(product))
 <TotalBox>
   <div>Subtotal : <span> {cartItems.products.reduce((a,c)=> a + c.quantity ,0)} items</span></div>
  <div><h4><span className='sar'>SR</span> {cartItems.products.reduce((a,c)=> a + c.price * c.quantity,0)}</h4></div>
-  <Button onClick={proceedPayment}>Proceed to buy</Button>
+  <Button onClick={()=>proceedPayment()}>Proceed to buy</Button>
 </TotalBox>
      </Cart>
      </Fragment>}
