@@ -1,6 +1,6 @@
 import React, {Fragment, useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
-import {useNavigate, useParams} from 'react-router-dom'
+import {Link, useNavigate, useParams} from 'react-router-dom'
 import Footer from '../../components/footer/Footer'
 import Logo from '../../components/logo/Logo'
 import NavBar from '../../components/navBar/NavBar'
@@ -70,6 +70,7 @@ const Product = () => {
     <NavBar/>
     <Footer/>
     <ProductContaienr>
+
     <CardDetails>
     <div className = 'image-wrapper' >
     <img src = {product.image}/> </div> <div className = 'product-content' >
@@ -81,6 +82,9 @@ const Product = () => {
       <Button onClick = {addToCartHandler} > Add to Cart </Button>
        </div>
        </CardDetails>
+       <Link to="/products">
+  Continue shopping {'>>'}
+  </Link>
         </ProductContaienr>
     </Fragment>
   )

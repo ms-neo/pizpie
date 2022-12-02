@@ -1,11 +1,15 @@
 import React, { Fragment } from 'react'
 import { Link } from 'react-router-dom'
-import { H2 } from './logoStyles'
+import { H2, LogoContainer, Square } from './logoStyles'
 
 const Logo = () => {
   return (
       <Fragment>
-    <H2><Link to="/">PizPie</Link></H2>
+      <LogoContainer>
+      <H2><Link to="/">PizPie</Link></H2>
+    <Square></Square>
+      </LogoContainer>
+
     </Fragment>
   )
 }

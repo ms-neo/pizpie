@@ -39,7 +39,7 @@ export const ItemsWrapper =styled.div`
 display:grid;
 grid-template-columns:1fr 1fr;
 align-items:center;
-margin:1vh 3vh;
+margin:1vh 2vh;
 
 @media (max-width: 768px) {
     grid-template-columns:1fr;

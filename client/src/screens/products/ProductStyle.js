@@ -2,11 +2,19 @@ import styled from "styled-components";
 
 export const ProductContaienr =styled.div`
 padding:4vh 10vh;
-height:auto;
+${'' /* height:auto; */}
 .sar{
     font-weight:500;
     font-size:1rem;
 }
+a{
+    ${'' /* margin:5vh 0; */}
+    text-decoration:none;
+    color:#F14C4C;
+    &:hover{
+        text-decoration:underline;  
+    }
+  }
 @media (max-width:768px){
     padding:4vh 2vh;
 }
@@ -14,15 +22,15 @@ height:auto;
 export const CardDetails = styled.div`
 display:grid;
 grid-template-columns:repeat(2,1fr);
-width:800px;
-height:300px;
+width:750px;
+height:260px;
 padding:7vh 6vh;
 grid-gap:8vh;
 box-shadow:0px 8px 15px #dddddd;
-margin-top:1vh;
+margin:4vh 0;
 .image-wrapper{
     width:390px;
-    height:300px;
+    height:260px;
 }
 img{
     width:100%;
