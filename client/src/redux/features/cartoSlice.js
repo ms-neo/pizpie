@@ -110,7 +110,7 @@ export const clearCart = createAsyncThunk('cart/clearCart',async (cartId,thunkAP
             }
         })
         console.log(data)
-        localStorage.setItem('cart',JSON.stringify(data))
+        localStorage.setItem('cart delete',JSON.stringify(data))
         return data 
     } catch (err) {
         let errMsg = err.response && err.response.data.message ?

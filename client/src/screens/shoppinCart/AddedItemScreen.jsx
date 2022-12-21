@@ -6,15 +6,16 @@ import Header from '../../components/header/Header'
 import Logo from '../../components/logo/Logo'
 import NavBar from '../../components/navBar/NavBar'
 import { addToCart } from '../../redux/features/cartoSlice'
+import { getProducts } from '../../redux/features/productsSlice'
 import { AddedItemContainer, AddedWrapper } from './shoppingCartStyles'
 
-function AddedItem() {
+const AddedItemScreen =() =>{
     const navigate =useNavigate()
     const dispatch =useDispatch()
     //to get the id from the url
     const params=useParams()
     const productId =params.id
-    const cart = useSelector(state=>state.cart)
+    const {products} = useSelector(state=>state.products)
   //to et the quantity fron the url string
   const search =useLocation().search
   const getQuantity = new URLSearchParams(search).get('qty')
@@ -24,19 +25,14 @@ function AddedItem() {
   // const getItem = cart.find(item=>item.productId ? item.qty : 1)
   
   
-    console.log(cart.cartItems.products,'cartscreen')
+    console.log(products,'products')
   
-  let product = cart.cartItems.products.find(item => item.productId === productId )
+  let product = products.find(item => item._id === productId )
 console.log(product,'getItem')
 
-    useEffect(() => {
-      if (productId){
-  window.history.pushState(null, null, document.URL);
-window.addEventListener('popstate', ()=> {
-   window.location.replace(`/products/${productId}`);
-});
-      }
-    }, [dispatch,productId,qty])
+useEffect(() => {
+  dispatch(getProducts())
+  }, [dispatch,getProducts])
   
     
   return (
@@ -47,17 +43,20 @@ window.addEventListener('popstate', ()=> {
     <Footer></Footer>
     <AddedItemContainer>
     <AddedWrapper>
-      <div>
-      <img src='../../media/pizza-homepage.png'/>
+      <div className='box-one'>
+     { products.length !==0 && (<Fragment>
+      <div className='img-wrapper'><img src={product.image}/></div>
       <p>{product.name}</p>
+      </Fragment>)}
        </div>
-       <div>
+       
        <h3>Item has been Added</h3>
-       </div>
+   
+       
 </AddedWrapper>
- <Link to='/products'>
- <h4>Continue Shopping ≥≥≥ </h4>
- </Link>
+    <Link to="/products">
+  Continue shopping {'>>'}
+  </Link>
     </AddedItemContainer>
  
     </Fragment>
@@ -65,4 +64,4 @@ window.addEventListener('popstate', ()=> {
 }
 
 
-export default AddedItem
+export default AddedItemScreen

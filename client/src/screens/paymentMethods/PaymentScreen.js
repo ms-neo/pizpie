@@ -12,6 +12,7 @@ import { toast } from 'react-toastify'
 import { createOrder } from '../../redux/features/orderSlice'
 import { getStripeSecret, reset } from '../../redux/features/stripeSlice'
 import UserAddress from '../../components/UerAddres'
+import { getUserAddress } from '../../redux/features/userAddressSlice'
 
 const PaymentScreen = () => {
 
@@ -34,7 +35,7 @@ amount= cartItems.products.reduce((a,c)=> a + c.price * c.quantity,0)
 const {client_secret}=stripeSecret
 
   useEffect(() => {
-
+// dispatch(getUserAddress())
     dispatch(getTotals())
       // if (performance.getEntriesByType("navigation")[0].type === "reload"){
         // dispatch(getTotals())
@@ -48,7 +49,7 @@ const {client_secret}=stripeSecret
       navigate('/signin')
     }
 
-  }, [dispatch,getTotals,getStripeSecret,cartTotalAmount,amount])
+  }, [dispatch,getTotals,getStripeSecret,cartTotalAmount,amount,getUserAddress])
 
 
 
@@ -87,6 +88,7 @@ dispatch(createOrder({...cart,
   userAddress,
   total:cart.cartTotalAmount,
 }))
+console.log(cartItems,'cart clear')
 dispatch(clearCart(cartItems._id))
     toast.success('your order has been placed')
     navigate('/order-placed')

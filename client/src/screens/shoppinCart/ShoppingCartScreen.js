@@ -1,12 +1,14 @@
-import React, { Fragment, useEffect} from 'react'
+import React, { Fragment, useEffect,useState,useRef} from 'react'
 import Header from '../../components/header/Header'
 import Logo from '../../components/logo/Logo'
 import NavBar from '../../components/navBar/NavBar'
-import { Cart, CartContainer, DeleteBtn, ItemsWrapper, PrdouctList, ProductFlex, ProductInfo, QuantityBtnCart, TotalBox } from './shoppingCartStyles'
+import { Cart, CartContainer, DeleteBtn, ItemsWrapper, PrdouctList, ProductFlex, ProductInfo, QuantityBtnCart, ShoppingContiner, TotalBox } from './shoppingCartStyles'
 import { Button} from '../../forms/formsStyles'
 import { Link, useNavigate} from 'react-router-dom'
 import {useDispatch,useSelector} from 'react-redux'
 import {  decrementItemQty, getCart, getTotals, incrementItemQty, removeItemFromCart, saveCart} from '../../redux/features/cartoSlice'
+import Spinner from '../../components/spinner/Spinner'
+
 
 
 
@@ -14,6 +16,8 @@ const ShoppingCartScreen = () => {
 
  const navigate =useNavigate()
   const dispatch =useDispatch()
+  const [disabled, setDisabled] =useState(false);
+  const bref =useRef(null)
   const cart = useSelector(state=>state.cart)
 
   const {user}= useSelector(state=>state.auth)
@@ -21,23 +25,59 @@ const {cartItems,cartTotalAmount}=cart
 
   useEffect(() => {
       dispatch(getCart(user._id))
-  }, [getCart, dispatch,user._id,cart._id]);
+  }, [getCart, dispatch,user._id,disabled]);
 
-const handleIncClick = (product) =>{
-  if (product.quantity <= 7 || product.quantity < product.countInStock){
+
+const handleIncClick = (product,e) =>{
+  const {quantity}=product
+  if (quantity === 7){
+    dispatch(incrementItemQty(product))
+    e.target.disabled=true
+    setDisabled(true)
+    setTimeout(() => {
+        setDisabled(false)
+   }, 500);
+  }
+  if (quantity < 7 || quantity < product.countInStock){
 dispatch(incrementItemQty(product))
-  }
+e.target.disabled=true
+setDisabled(true)
+setTimeout(() => {
+    e.target.disabled=false
+    setDisabled(false)
+}, 800);
+} 
+  
 }
-const handleDecClick = (product) =>{
-  if (product.quantity > 1){
-dispatch(decrementItemQty(product))
-  }
+
+
+const handleDecClick = (product,e) =>{
+  let  {quantity}=product
+  if (quantity === 2 ){
+    e.target.disabled=true
+    dispatch(decrementItemQty(product))
+    setDisabled(true)
+    setTimeout(() => {
+        setDisabled(false)
+   }, 500);
+   } 
+   if (quantity > 2){
+    dispatch(decrementItemQty(product))
+      e.target.disabled=true
+      setDisabled(true)
+      console.log(disabled,"dis")
+      setTimeout(() => {
+          e.target.disabled=false
+          setDisabled(false)
+     }, 800);
+   } 
 }
 
   const handleRmoveItem = (product) =>  {
     let productId =product.productId
     dispatch(removeItemFromCart(productId))
   }
+
 
   const goToProductPage =(product)=>{
     console.log(product)
@@ -57,10 +97,14 @@ dispatch(decrementItemQty(product))
   return (
      
     <Fragment>
+    <ShoppingContiner>
     <Header/>
     <Logo/>
      <NavBar/>
+
+{disabled && <Spinner/>}
      <CartContainer>
+  
     {(!cartItems || cartItems.length === 0 )? 
     <h2>Your Cart Is empty .</h2>
     : 
@@ -75,9 +119,9 @@ dispatch(decrementItemQty(product))
 </ProductInfo>
 <ProductFlex>
 <QuantityBtnCart>
-<button onClick={()=>handleIncClick(item)}>+</button>
+{item.quantity ===8 ? <button disabled>+</button>:<button onClick={(e)=>handleIncClick(item,e)}>+</button>}
 <div>{item.quantity}</div>
-<button onClick={()=>handleDecClick(item)}>-</button>
+{item.quantity ===1?<button disabled>-</button> : <button onClick={(e)=>handleDecClick(item,e)}>-</button>}
 </QuantityBtnCart>
 <div><DeleteBtn onClick={()=>handleRmoveItem(item)}>Delete</DeleteBtn></div>
 <div><h3><span className='sar'>SR</span> { item.price * item.quantity}</h3></div>
@@ -96,6 +140,7 @@ dispatch(decrementItemQty(product))
   Continue shopping {'>>'}
   </Link>
      </CartContainer>
+     </ShoppingContiner>
     </Fragment>
   )
 }

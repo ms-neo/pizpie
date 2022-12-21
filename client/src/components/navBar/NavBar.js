@@ -3,7 +3,7 @@ import { Container, DropBtn, DropDown, DropDownContent, NavBarImg, NavBarItems, 
 import { Link, Navigate, useNavigate} from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { getUser, logout, reset } from '../../redux/features/userSlice'
-import { getCart, resetCart } from '../../redux/features/cartoSlice'
+import { clearCart, getCart, resetCart } from '../../redux/features/cartoSlice'
 
 
 const NavBar = () => {
@@ -21,11 +21,15 @@ const handleClick =()=>{
   dispatch(logout(user))
   navigate('/')
 }
+// useEffect(() => {
+//   dispatch(clearCart())
+// }, [   dispatch,clearCart])
 
 const goToCart = ()=>{
 
   if (user){
     navigate(`/cart/${user._id}`)
+ 
   } else {
   navigate(`/cart`)
   }

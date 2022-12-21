@@ -1,15 +1,20 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useEffect } from 'react'
 import { Container } from './orderPlacedStyles'
 import Header  from '../../components/header/Header'
 import Logo  from '../../components/logo/Logo'
 import NavBar from '../../components/navBar/NavBar'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { clearCart } from '../../redux/features/cartoSlice'
 
 const OrderPlacedScreen = () => {
 
-  // const order =useSelector(state=>state.order)
+ 
+const dispatch = useDispatch()
 
-  
+  useEffect(() => {
+    // dispatch(clearCart())
+  }, [   dispatch,clearCart])
+
   return (
       <Fragment>
 <Header/>

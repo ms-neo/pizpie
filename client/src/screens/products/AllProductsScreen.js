@@ -5,7 +5,7 @@ import Header from '../../components/header/Header'
 import Logo from '../../components/logo/Logo'
 import NavBar from '../../components/navBar/NavBar'
 import MenuBar from '../../components/menuBar/MenuBar'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { getProducts } from '../../redux/features/productsSlice'
 import { saveCart } from '../../redux/features/cartoSlice'
@@ -15,6 +15,7 @@ import { toast } from 'react-toastify'
 const Products = () => {
   
   const dispatch =useDispatch()
+  const navigate =useNavigate()
 const {products} = useSelector(state=>state.products)
 const {user} =useSelector(state=>state.auth)
 const {cartItems} = useSelector(state=>state.cart)
@@ -45,6 +46,7 @@ const handleAddItem =product =>{
     if (!currentItem || currentItem.quantity < 8) {
     dispatch(saveCart({product,qty}))
     toast.success("Item has been successfully added.");
+    // navigate(`/item-added/${product._id}`)
     } else{
       toast.error("you can't add more than 8 items of this product to cart")
      }

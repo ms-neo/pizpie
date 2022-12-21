@@ -1,9 +1,16 @@
 import styled from "styled-components";
 
 
-export const CartContainer =styled.div`
+export const ShoppingContiner = styled.div `
+position:relative;
+width:100%;
+height:99vh;
+`
+
+export const CartContainer = styled.div `
 margin:5vh;
 padding:0 5vh;
+
 
 .line{
     margin:3vh 0;
@@ -26,7 +33,7 @@ padding:0 5vh;
     }
   }
 `
-export const Cart =styled.div`
+export const Cart = styled.div `
 display:grid;
 grid-template-columns:60% 40%;
 
@@ -35,7 +42,7 @@ grid-template-columns:60% 40%;
     margin:4vh 0;
   }
 `
-export const ItemsWrapper =styled.div`
+export const ItemsWrapper = styled.div `
 display:grid;
 grid-template-columns:1fr 1fr;
 align-items:center;
@@ -47,7 +54,7 @@ margin:1vh 2vh;
   }
 `
 
-export const TotalBox =styled.div`
+export const TotalBox = styled.div `
 background:#F5F5F5;
 width:300px;
 padding:6vh 5vh;
@@ -66,11 +73,10 @@ a{
 
 @media (max-width: 768px) {
    padding:3vh 0vh;
-
   }
 
 `
-export const ProductInfo =styled.div`
+export const ProductInfo = styled.div `
 display:flex;
 justify-content:flex-start;
 align-items:center;
@@ -98,17 +104,18 @@ p{
   }
 `
 
-export const PrdouctList = styled.div`
+export const PrdouctList = styled.div `
 display:grid;
 grid-template-columns:1fr;
 
 
 `
 
-export const QuantityBtnCart =styled.div`
+export const QuantityBtnCart = styled.div `
 display:flex;
 font-size:1.3rem;
 width:100px;
+position:relative;
 button{
     width:40px;
     height:30px;
@@ -137,40 +144,55 @@ div:last-child{
   }
 `
 
-export const DeleteBtn =styled.div`
+export const DeleteBtn = styled.div `
 color:#F34107;
 font-weight:bold;
 width:50px;
 cursor:pointer;
 `
-export const AddedItemContainer =styled.div`
+export const AddedItemContainer = styled.div `
 margin:10vh 20vh;
-h4{
-    margin-top:2vh;
-}
+
 a{
+    color:red;
     text-decoration:none;
-    color:#000;
+
 }
 `
 
-export const AddedWrapper = styled.div`
-display:flex;
-grid-template-columns:1fr 1fr;
+export const AddedWrapper = styled.div `
+display:grid;
+grid-template-columns:30% 70%;
 align-items:center;
 background:#F5F5F5;
 text-align:center;
-width:800px;
+width:600px;
+height:210px;
+margin-bottom:3vh;
+.box-one{
 height:200px;
+width:250px;
+}
+
+p{
+    font-size:1.1rem;
+    font-weight:500;
+}
+.img-wrapper{
+width:100%;
+height:150px;
+}
 img{
-    width:50%;
+    width:60%;
+    height:60%;
+    object-fit:cover;
+    margin-bottom:1vh;
+    margin-top:6vh;
 }
-div{
-width:30%
-}
+
 `
 
-export const ProductFlex =styled.div`
+export const ProductFlex = styled.div `
 display:grid;
 grid-template-columns:repeat(3,1fr);
 align-items:baseline;

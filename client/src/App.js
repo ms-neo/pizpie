@@ -28,6 +28,7 @@ import SaladsScreen from './screens/products/SaladsScreen';
 import PizzaScreen from './screens/products/PizzaScreen';
 import { useDispatch, useSelector } from 'react-redux';
 import { getStripeKey } from './redux/features/stripeSlice';
+import AddedItemScreen from './screens/shoppinCart/AddedItemScreen';
 
 
 
@@ -71,6 +72,7 @@ dispatch(getStripeKey())
   </Elements>
   }></Route>}
   <Route path='/order-placed' element={<OrderPlacedScreen/>}></Route>
+  {/* <Route path='/item-added/:id' element={<AddedItemScreen/>}></Route> */}
 
 </Routes>
 

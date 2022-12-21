@@ -8,6 +8,7 @@ const { isAuth } = require('../../utils')
 // POST cart to dATABASE
 cartRouter.post('/', isAuth, async (req, res) => {
 console.log(req.user)
+//get the data from the client
     let product = {
         productId: req.body.product._id,
         name: req.body.product.name,
@@ -17,20 +18,22 @@ console.log(req.user)
     }
 
     try {
+        //check if there's a cart or not
         let userCart = await MyCart.findOne({
             user: req.user.id
         })
+        //if there's a cart ...
         if (userCart) {
-            let check =  userCart.products.find(x => x.productId == req.body.product._id)
-  
+            // check if the product is already exist in the cart
+            const check =  userCart.products.find(x => x.productId == req.body.product._id)
+       
+            // if it's not exist 
             if (!check) {
                 userCart = await MyCart.findOneAndUpdate({
                     user: req.user.id,
-            
                 }, {
                     $push: {
                         products: product,
-
                     }, // to push more objects to the products array
                 }, {
                     new: true
@@ -38,8 +41,8 @@ console.log(req.user)
                 console.log(userCart,'savecart router')
                 return res.json(userCart)
 
-            }  else {
-                if (check.quantity <8){
+            }  else if (check && check.quantity < 8){
+                    console.log(check.productId,'check')
                 userCart = await MyCart.findOneAndUpdate({
                         user: req.user.id,
                         "products.productId": req.body.product._id
@@ -60,7 +63,7 @@ console.log(req.user)
                             return res.json(response)
                         }
                     })
-            }
+            // }
         }
         }  else {
             userCart = new MyCart({
@@ -126,12 +129,13 @@ cartRouter.put('/decQuantity', isAuth, async (req, res) => {
         let userCart = await MyCart.findOne({
             user: req.user.id
         })
-        if (userCart) {
-            const item =userCart.products.find(x=>x.productId == req.body.productId)
-            console.log(item,userCart,'item')
-            console.log(req.body.productId,'dd')
-
-            if ( item.quantity >1 ) {
+        // to not get an error when looping in undefiend 
+        let item ;
+        if (userCart){
+            item =userCart.products.find(x=>x.productId == req.body.productId)
+        }
+        let q=item.quantity
+        if (userCart && q >= 2 ) {
             userCart = await MyCart.findOneAndUpdate({
                 user: req.user.id,
                 "products.productId": req.body.productId
@@ -150,7 +154,9 @@ cartRouter.put('/decQuantity', isAuth, async (req, res) => {
                     return res.json(response)
                 }
             })
-        }
+    } else if (q === 1){
+        console.log('non')
+        return res.json(userCart)
     }
     } catch (err) {
         console.log(err)
@@ -171,7 +177,7 @@ const userId =req.params.id
         if (myCart) {
             return res.status(200).json(myCart)
         } else{
-            return res.status(200).json([])
+            return res.status(200).json()
         }
     } catch (error) {
         console.log(error)
@@ -185,12 +191,17 @@ cartRouter.delete('/del/:id', isAuth, async (req, res) => {
 
     const productId = req.params.id
 
+
     try {
         let userCart = await MyCart.findOne({
             user: req.user.id
         })
- 
-        if (userCart) {
+        console.log(userCart.products.length,"userCart length")
+        if (!userCart || userCart.products.length === 0 ){
+            console.log('why')
+            await MyCart.deleteOne({use:req.user.id})
+            return res.json()
+        } else if (userCart) {
       
             userCart = await MyCart.findOneAndUpdate({
                 user: req.user.id,
@@ -206,8 +217,10 @@ cartRouter.delete('/del/:id', isAuth, async (req, res) => {
                 if (err) {
                     return res.json(err)
                 } else {
-                   if (!response.products.length){
-                    await MyCart.deleteOne({use:req.user.id})
+                   if (response.products.length === 0 ){
+                    console.log(response,"respons")
+                    //Delete the cart when delet all items in the cart
+                    await MyCart.findByIdAndDelete({_id:response._id})
                     return res.json()
                    } else{
                     return res.json(response)
@@ -223,13 +236,25 @@ cartRouter.delete('/del/:id', isAuth, async (req, res) => {
 })
 
 
-//Delet cart
+//Delete cart
 cartRouter.delete('/:id',isAuth, async (req, res) => {
     try {
-        await MyCart.findOneAndRemove({
-            id: req.params.id
+        let userCart = await MyCart.findOne({
+            user: req.user.id
         })
-            res.json()
+        console.log(userCart.products.length,"userCart length")
+        console.log(req.user.id,"userCart length")
+        if (userCart.products.length !== 0){
+            await userCart.deleteOne({use:req.user.id})
+            return res.json()
+        } else{
+            return res.json({})
+        }
+
+        // await MyCart.findOneAndRemove({
+        //     id: req.params.id
+        // })
+        //    return res.json()
     } catch (err) {
         console.log(err)
         return res.json(err.message)
