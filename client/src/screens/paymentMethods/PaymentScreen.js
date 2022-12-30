@@ -35,7 +35,7 @@ amount= cartItems.products.reduce((a,c)=> a + c.price * c.quantity,0)
 const {client_secret}=stripeSecret
 
   useEffect(() => {
-// dispatch(getUserAddress())
+dispatch(getUserAddress(user._id))
     dispatch(getTotals())
       // if (performance.getEntriesByType("navigation")[0].type === "reload"){
         // dispatch(getTotals())
@@ -49,7 +49,7 @@ const {client_secret}=stripeSecret
       navigate('/signin')
     }
 
-  }, [dispatch,getTotals,getStripeSecret,cartTotalAmount,amount,getUserAddress])
+  }, [dispatch,getTotals,getStripeSecret,cartTotalAmount,amount,getUserAddress,user])
 
 
 

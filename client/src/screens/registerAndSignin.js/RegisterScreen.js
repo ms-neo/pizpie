@@ -29,7 +29,7 @@ useEffect(() => {
     toast.error(message)
   } else if (isSuccess || user){
     disaptch(reset())
-    navigate('/signin')
+    navigate('/')
   }
   
 }, [user ,message ,isLoading,isSuccess ,isError,disaptch,reset])

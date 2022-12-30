@@ -45,7 +45,7 @@ setDisabled(true)
 setTimeout(() => {
     e.target.disabled=false
     setDisabled(false)
-}, 800);
+}, 650);
 } 
   
 }
@@ -69,7 +69,7 @@ const handleDecClick = (product,e) =>{
       setTimeout(() => {
           e.target.disabled=false
           setDisabled(false)
-     }, 800);
+     }, 650);
    } 
 }
 
