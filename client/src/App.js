@@ -67,7 +67,7 @@ dispatch(getStripeKey())
   <Route path='/shipping-address' element={<ShippingAdress/>}></Route>
   <Route path='/shipping-address/mine/:id' element={<UserAddress/>}></Route>
   <Route exact path='/order-details/:id' element={<OrderDetailsScreen/>}></Route>
-  {stripePublicKey&& <Route path='/payment' element={<Elements stripe={loadStripe(`${stripePublicKey}`)}>
+  {stripePublicKey && <Route path='/payment' element={<Elements stripe={loadStripe(`${stripePublicKey}`)}>
     <PaymentScreen/>
   </Elements>
   }></Route>}

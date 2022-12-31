@@ -27,7 +27,10 @@ const {user ,message ,isLoading,isSuccess ,isError}= useSelector(state=>state.au
 useEffect(() => {
   if (isError){
     toast.error(message)
-  } else if (isSuccess || user){
+    console.log(message)
+    disaptch(reset())
+  } 
+   if (isSuccess){
     disaptch(reset())
     navigate('/')
   }
@@ -36,7 +39,10 @@ useEffect(() => {
 
 
 const handleSumbit = e =>{
+
   e.preventDefault()
+
+
   if (password !== password2){
     toast.error('password are not match')
   } else{
@@ -46,8 +52,12 @@ const handleSumbit = e =>{
       password
     }
     // save data to the database by
-    disaptch(register(userData))
-
+    console.log(userData)
+    console.log(isError,'isError')
+    console.log(isSuccess,'isSuccess')
+      disaptch(register(userData))
+      // navigate('/')
+ 
   }
 }
 

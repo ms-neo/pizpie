@@ -110,6 +110,7 @@ const authSlice = createSlice({
                 }) => {
                     state.isLoading =false;
                     state.isSuccess=true;
+                    state.isError = false
                     state.user = payload
               
             },
@@ -118,6 +119,7 @@ const authSlice = createSlice({
                 }) => {
                     state.isLoading = false
                     state.isError = true
+                    console.log(payload,'payload reg')
                     state.message =payload
                     state.user =null
             },
